@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Night of the Ninja - Role & Ability Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans', 'Noto Sans TC', sans-serif;
+            background-color: #1a1a1a;
+            background-image: url('https://www.transparenttextures.com/patterns/ninja-naruto.png');
+        }
+        .title-font {
+            font-family: 'Cinzel', serif;
+        }
+        .card {
+            background-color: rgba(30, 41, 59, 0.8);
+            border-width: 2px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            height: 100%; /* Ensure cards in the same row have the same height */
+            display: flex;
+            flex-direction: column;
+        }
+        .card-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center content vertically */
+            align-items: center; /* Center content horizontally */
+        }
+        .card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+        .card-header {
+            border-bottom-width: 1px;
+        }
+        /* Card Type Colors - Updated */
+        .card-spy { border-color: #facc15; } /* Yellow */
+        .card-spy .card-header { border-bottom-color: #facc15; }
+        .card-mystic { border-color: #f97316; } /* Orange */
+        .card-mystic .card-header { border-bottom-color: #f97316; }
+        .card-assassin { border-color: #a855f7; } /* Purple */
+        .card-assassin .card-header { border-bottom-color: #a855f7; }
+        .card-shinobi { border-color: #2563eb; } /* Dark Blue */
+        .card-shinobi .card-header { border-bottom-color: #2563eb; }
+        .card-trickster { border-color: #ef4444; } /* Red */
+        .card-trickster .card-header { border-bottom-color: #ef4444; }
+        .card-special { border-color: #f9fafb; } /* White */
+        .card-special .card-header { border-bottom-color: #f9fafb; }
+    </style>
+</head>
+<body class="text-gray-200 p-4 sm:p-6 md:p-8">
+
+    <div class="relative text-center mb-12">
+        <button id="lang-toggle-btn" class="absolute top-0 right-0 bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-200">
+            切換中文
+        </button>
+        <h1 id="main-title" class="text-4xl md:text-5xl font-bold text-white mb-2 tracking-wider title-font">Night of the Ninja</h1>
+        <p id="sub-title" class="text-xl text-gray-400">Role & Ability Visual Guide</p>
+    </div>
+
+    <!-- Ninja Roles -->
+    <div class="mb-12">
+        <h2 id="core-roles-title" class="text-2xl font-bold text-white border-l-4 border-yellow-400 pl-4 mb-6 title-font">Ninjas</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Spy Card -->
+            <div class="card rounded-lg shadow-lg card-spy">
+                <div class="card-header p-4 flex justify-between items-center">
+                    <h3 id="spy-name" class="text-lg font-bold">Spy</h3>
+                    <div class="bg-yellow-500 text-black w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">1-6</div>
+                </div>
+                <div class="p-5 text-center card-content">
+                    <p id="spy-desc" class="text-gray-300">Look at another player's House card.</p>
+                </div>
+            </div>
+            <!-- Mystic Card -->
+            <div class="card rounded-lg shadow-lg card-mystic">
+                <div class="card-header p-4 flex justify-between items-center">
+                    <h3 id="mystic-name" class="text-lg font-bold">Mystic</h3>
+                    <div class="bg-orange-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">1-6</div>
+                </div>
+                <div class="p-5 text-center card-content">
+                    <p id="mystic-desc" class="text-gray-300">Look at another player's House card and one of their Ninja cards.</p>
+                </div>
+            </div>
+            <!-- Blind Assassin Card -->
+            <div class="card rounded-lg shadow-lg card-assassin">
+                <div class="card-header p-4 flex justify-between items-center">
+                    <h3 id="assassin-name" class="text-lg font-bold">Blind Assassin</h3>
+                    <div class="bg-purple-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">1-6</div>
+                </div>
+                <div class="p-5 text-center card-content">
+                    <p id="assassin-desc" class="text-gray-300">Choose a player and Kill them.<br>(You cannot see their House card first.)</p>
+                </div>
+            </div>
+            <!-- Shinobi Card -->
+            <div class="card rounded-lg shadow-lg card-shinobi">
+                <div class="card-header p-4 flex justify-between items-center">
+                    <h3 id="shinobi-name" class="text-lg font-bold">Shinobi</h3>
+                    <div class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">1-6</div>
+                </div>
+                <div class="p-5 text-center card-content">
+                    <p id="shinobi-desc" class="text-gray-300">Look at another player's House card, then you may choose to Kill them.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Tricksters -->
+    <div class="mb-12">
+        <h2 id="tricksters-title" class="text-2xl font-bold text-white border-l-4 border-red-500 pl-4 mb-6 title-font">Tricksters</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="card rounded-lg shadow-lg card-trickster">
+                <div class="card-header p-4 flex justify-between items-center">
+                    <h3 id="shapeshifter-name" class="text-lg font-bold">Shapeshifter</h3>
+                    <div class="bg-red-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">1</div>
+                </div>
+                <div class="p-5 text-center card-content">
+                    <p id="shapeshifter-desc" class="text-gray-300">Look at the House cards of two players. You may secretly swap them.</p>
+                </div>
+            </div>
+             <div class="card rounded-lg shadow-lg card-trickster">
+                <div class="card-header p-4 flex justify-between items-center">
+                    <h3 id="gravedigger-name" class="text-lg font-bold">Grave Digger</h3>
+                    <div class="bg-red-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">2</div>
+                </div>
+                <div class="p-5 text-center card-content">
+                    <p id="gravedigger-desc" class="text-gray-300">Look at two discarded Ninja cards and pick one. You may play it immediately or keep it.</p>
+                </div>
+            </div>
+            <div class="card rounded-lg shadow-lg card-trickster">
+                <div class="card-header p-4 flex justify-between items-center">
+                    <h3 id="troublemaker-name" class="text-lg font-bold">Troublemaker</h3>
+                    <div class="bg-red-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">3</div>
+                </div>
+                <div class="p-5 text-center card-content">
+                    <p id="troublemaker-desc" class="text-gray-300">Look at another player's House card. You may reveal it.</p>
+                </div>
+            </div>
+            <div class="card rounded-lg shadow-lg card-trickster">
+                <div class="card-header p-4 flex justify-between items-center">
+                    <h3 id="spiritmerchant-name" class="text-lg font-bold">Spirit Merchant</h3>
+                    <div class="bg-red-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">4</div>
+                </div>
+                <div class="p-5 text-center card-content">
+                    <p id="spiritmerchant-desc" class="text-gray-300">Look at another player's Honor token or House card. You may swap one Honor token with them.</p>
+                </div>
+            </div>
+            <div class="card rounded-lg shadow-lg card-trickster">
+                <div class="card-header p-4 flex justify-between items-center">
+                    <h3 id="thief-name" class="text-lg font-bold">Thief</h3>
+                    <div class="bg-red-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">5</div>
+                </div>
+                <div class="p-5 text-center card-content">
+                    <p id="thief-desc" class="text-gray-300">Reveal your House card. You may take one Honor token from a player who has more than you.</p>
+                </div>
+            </div>
+            <div class="card rounded-lg shadow-lg card-trickster">
+                <div class="card-header p-4 flex justify-between items-center">
+                    <h3 id="judge-name" class="text-lg font-bold">Judge</h3>
+                    <div class="bg-red-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">6</div>
+                </div>
+                <div class="p-5 text-center card-content">
+                    <p id="judge-desc" class="text-gray-300">Reveal your House card. Choose a player and Kill them. (Mirror Monk and Martyr do not work.)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Special Cards -->
+    <div class="mb-12">
+        <h2 id="special-cards-title" class="text-2xl font-bold text-white border-l-4 border-gray-300 pl-4 mb-6 title-font">Special Cards</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="card rounded-lg shadow-lg card-special">
+                <div class="card-header p-4 flex justify-between items-center">
+                    <h3 id="mirrormonk-name" class="text-lg font-bold">Mirror Monk</h3>
+                    <div id="react-text1" class="bg-gray-400 text-black px-3 h-8 rounded-lg flex items-center justify-center font-bold text-sm flex-shrink-0">React</div>
+                </div>
+                <div class="p-5 text-center card-content">
+                    <p id="mirrormonk-desc" class="text-gray-300">Reveal this if chosen to be Killed. Instead, you Kill them.</p>
+                </div>
+            </div>
+            <div class="card rounded-lg shadow-lg card-special">
+                <div class="card-header p-4 flex justify-between items-center">
+                    <h3 id="martyr-name" class="text-lg font-bold">Martyr</h3>
+                     <div id="react-text2" class="bg-gray-400 text-black px-3 h-8 rounded-lg flex items-center justify-center font-bold text-sm flex-shrink-0">React</div>
+                </div>
+                <div class="p-5 text-center card-content">
+                    <p id="martyr-desc" class="text-gray-300">Reveal this if chosen to be Killed. You are still Killed, but you gain an Honor token.</p>
+                </div>
+            </div>
+            <div class="card rounded-lg shadow-lg card-special">
+                <div class="card-header p-4 flex justify-between items-center">
+                    <h3 id="mastermind-name" class="text-lg font-bold">Mastermind</h3>
+                     <div id="special-text" class="bg-gray-400 text-black px-3 h-8 rounded-lg flex items-center justify-center font-bold text-sm flex-shrink-0">Special</div>
+                </div>
+                <div class="p-5 text-center card-content">
+                    <p id="mastermind-desc" class="text-gray-300">If you are still alive during the Reveal phase, your House wins.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            en: {
+                'main-title': 'Night of the Ninja',
+                'sub-title': 'Role & Ability Visual Guide',
+                'core-roles-title': 'Ninjas',
+                'tricksters-title': 'Tricksters',
+                'special-cards-title': 'Special Cards',
+                'lang-toggle-btn': '切換中文',
+                'spy-name': 'Spy',
+                'spy-desc': "Look at another player's House card.",
+                'mystic-name': 'Mystic',
+                'mystic-desc': "Look at another player's House card and one of their Ninja cards.",
+                'assassin-name': 'Blind Assassin',
+                'assassin-desc': "Choose a player and Kill them.<br>(You cannot see their House card first.)",
+                'shinobi-name': 'Shinobi',
+                'shinobi-desc': "Look at another player's House card, then you may choose to Kill them.",
+                'shapeshifter-name': 'Shapeshifter',
+                'shapeshifter-desc': "Look at the House cards of two players. You may secretly swap them.",
+                'gravedigger-name': 'Grave Digger',
+                'gravedigger-desc': "Look at two discarded Ninja cards and pick one. You may play it immediately or keep it.",
+                'troublemaker-name': 'Troublemaker',
+                'troublemaker-desc': "Look at another player's House card. You may reveal it.",
+                'spiritmerchant-name': 'Spirit Merchant',
+                'spiritmerchant-desc': "Look at another player's Honor token or House card. You may swap one Honor token with them.",
+                'thief-name': 'Thief',
+                'thief-desc': "Reveal your House card. You may take one Honor token from a player who has more than you.",
+                'judge-name': 'Judge',
+                'judge-desc': "Reveal your House card. Choose a player and Kill them. (Mirror Monk and Martyr do not work.)",
+                'mirrormonk-name': 'Mirror Monk',
+                'mirrormonk-desc': 'Reveal this if chosen to be Killed. Instead, you Kill them.',
+                'martyr-name': 'Martyr',
+                'martyr-desc': 'Reveal this if chosen to be Killed. You are still Killed, but you gain an Honor token.',
+                'mastermind-name': 'Mastermind',
+                'mastermind-desc': 'If you are still alive during the Reveal phase, your House wins.',
+                'react-text1': 'React',
+                'react-text2': 'React',
+                'special-text': 'Special',
+            },
+            zh: {
+                'main-title': '忍者之夜',
+                'sub-title': '角色能力視覺化圖鑑',
+                'core-roles-title': '忍者',
+                'tricksters-title': '騙徒 <span class="font-normal text-gray-400">Trickster</span>',
+                'special-cards-title': '特殊卡牌',
+                'lang-toggle-btn': 'Switch to English',
+                'spy-name': '密探 <span class="font-normal text-gray-400">Spy</span>',
+                'spy-desc': '查看一名玩家的流派牌。',
+                'mystic-name': '隱士 <span class="font-normal text-gray-400">Mystic</span>',
+                'mystic-desc': '查看一名玩家的流派牌及他的一張忍者牌。',
+                'assassin-name': '盲眼刺客 <span class="font-normal text-gray-400">Blind Assassin</span>',
+                'assassin-desc': '選擇一名玩家並將其殺死。<br>（無法預先查看目標流派）',
+                'shinobi-name': '上忍 <span class="font-normal text-gray-400">Shinobi</span>',
+                'shinobi-desc': '查看一名玩家的流派牌，<br>然後可選擇是否殺死他。',
+                'shapeshifter-name': '易容者 <span class="font-normal text-gray-400">Shapeshifter</span>',
+                'shapeshifter-desc': '查看兩名玩家的流派牌，<br>可以秘密地交換它們。',
+                'gravedigger-name': '掘墓人 <span class="font-normal text-gray-400">Grave Digger</span>',
+                'gravedigger-desc': '從棄牌堆選一張忍者牌，<br>可立刻使用或保留。',
+                'troublemaker-name': '搗蛋鬼 <span class="font-normal text-gray-400">Troublemaker</span>',
+                'troublemaker-desc': '查看一名玩家的流派牌，<br>可選擇是否公開。',
+                'spiritmerchant-name': '靈魂商人 <span class="font-normal text-gray-400">Spirit Merchant</span>',
+                'spiritmerchant-desc': '查看一名玩家的榮譽標記或流派牌，<br>可與他交換一個榮譽標記。',
+                'thief-name': '盜賊 <span class="font-normal text-gray-400">Thief</span>',
+                'thief-desc': '公開你的流派牌，<br>可從榮譽比你多的玩家處拿走一個。',
+                'judge-name': '審判官 <span class="font-normal text-gray-400">Judge</span>',
+                'judge-desc': '公開你的流派牌，選擇一名玩家殺死他。<br>（「鏡僧」和「殉道者」無效）',
+                'mirrormonk-name': '鏡僧 <span class="font-normal text-gray-400">Mirror Monk</span>',
+                'mirrormonk-desc': '當被選為擊殺目標時發動，<br>將擊殺效果反彈給攻擊者。',
+                'martyr-name': '殉道者 <span class="font-normal text-gray-400">Martyr</span>',
+                'martyr-desc': '當被選為擊殺目標時發動，<br>你死亡但獲得一個榮譽標記。',
+                'mastermind-name': '首腦 <span class="font-normal text-gray-400">Mastermind</span>',
+                'mastermind-desc': '在揭示階段，如果你存活，<br>你所屬的流派直接獲勝。',
+                'react-text1': '反應',
+                'react-text2': '反應',
+                'special-text': '特殊',
+            }
+        };
+
+        let currentLang = 'en';
+        const langToggleButton = document.getElementById('lang-toggle-btn');
+
+        const setLanguage = (lang) => {
+            currentLang = lang;
+            const langData = translations[lang];
+            for (const id in langData) {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.innerHTML = langData[id];
+                }
+            }
+             // Also update the main category title for Tricksters and Special Cards
+            document.getElementById('tricksters-title').classList.toggle('border-red-500', true);
+            document.getElementById('tricksters-title').classList.remove('border-purple-400');
+            document.getElementById('special-cards-title').classList.toggle('border-gray-300', true);
+            document.getElementById('special-cards-title').classList.remove('border-amber-400');
+            if (lang === 'zh') {
+                 document.getElementById('core-roles-title').classList.add('title-font');
+            } else {
+                document.getElementById('core-roles-title').classList.add('title-font');
+            }
+        };
+
+        langToggleButton.addEventListener('click', () => {
+            const newLang = currentLang === 'en' ? 'zh' : 'en';
+            setLanguage(newLang);
+        });
+
+        // Initialize with English
+        setLanguage('en');
+    </script>
+</body>
+</html>
